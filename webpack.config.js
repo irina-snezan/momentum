@@ -10,7 +10,7 @@ const esLintPlugin = (isDev) => isDev ? [] : [new ESLintPlugin({ extensions: ['j
 
 module.exports = {
 	mode: dev,
-  entry: './src/js/index.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
@@ -30,14 +30,14 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
+      }
     ],
 	},
 	
 	plugins: [
 		 ...esLintPlugin(dev),
     new HtmlWebpackPlugin({
-          template: path.resolve(__dirname, './src/js/index.html'),
+          template: path.resolve(__dirname, './src/index.html'),
 		}),
 		new CopyWebpackPlugin({
           patterns: [{
@@ -50,7 +50,7 @@ module.exports = {
     }),
 		 new CleanWebpackPlugin({
 			 cleanStaleWebpackAssets: false
-		 }),
+		 })
 	],
 	 devServer: {
     open: true,
